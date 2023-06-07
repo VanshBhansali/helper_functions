@@ -110,13 +110,14 @@ def make_confusion_matrix(y_true, y_pred, classes=None, figsize=(10, 10), text_s
     fig.savefig("confusion_matrix.png")
   
 # Make a function to predict on images and plot them (works with multi-class)
+# Make a function to predict on images and plot them (works with multi-class)
 def predict(model, filename, class_names):
   """
   Imports an image located at filename, makes a prediction on it with
   a trained model and plots the image with the predicted class as the title.
   """
   # Import the target image and preprocess it
-  img = load_and_prep_image(filename)
+  img = preprocess_data(filename)
 
   # Make a prediction
   pred = model.predict(tf.expand_dims(img, axis=0))
@@ -131,6 +132,7 @@ def predict(model, filename, class_names):
   plt.imshow(img)
   plt.title(f"Prediction: {pred_class}")
   plt.axis(False);
+
   
 import datetime
 
