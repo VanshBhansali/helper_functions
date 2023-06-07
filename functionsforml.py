@@ -4,7 +4,7 @@
 import tensorflow as tf
 
 # Create a function to import an image and resize it to be able to be used with our model
-def load_and_prep_image(filename, img_shape=224, scale=True):
+def preprocess_data(filename, img_shape=224, scale=True):
   """
   Reads in an image from filename, turns it into a tensor and reshapes into
   (224, 224, 3).
@@ -110,7 +110,7 @@ def make_confusion_matrix(y_true, y_pred, classes=None, figsize=(10, 10), text_s
     fig.savefig("confusion_matrix.png")
   
 # Make a function to predict on images and plot them (works with multi-class)
-def pred_and_plot(model, filename, class_names):
+def predict(model, filename, class_names):
   """
   Imports an image located at filename, makes a prediction on it with
   a trained model and plots the image with the predicted class as the title.
@@ -155,7 +155,7 @@ def create_tensorboard_callback(dir_name, experiment_name):
 # Plot the validation and training data separately
 import matplotlib.pyplot as plt
 
-def plot_loss_curves(history):
+def curves(history):
   """
   Returns separate loss curves for training and validation metrics.
 
@@ -248,7 +248,7 @@ def unzip_data(filename):
 # are in each subdirectory.
 import os
 
-def walk_through_dir(dir_path):
+def knowyourdata(dir_path):
   """
   Walks through dir_path returning its contents.
 
