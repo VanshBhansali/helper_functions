@@ -286,3 +286,24 @@ def calculate_results(y_true, y_pred):
                   "recall": model_recall,
                   "f1": model_f1}
   return model_results
+
+
+
+import tensorflow as tf
+
+def create_earlystopping_callback():
+    """
+    Creates an EarlyStopping callback to stop training when a monitored metric has stopped improving.
+
+    The EarlyStopping callback monitors the validation loss and stops training if it doesn't improve
+    for a specified number of epochs (patience).
+
+    Returns:
+    - early_stopping_callback: TensorFlow.keras.callbacks.EarlyStopping callback
+    """
+    early_stopping_callback = tf.keras.callbacks.EarlyStopping(
+        patience=3,  # Number of epochs with no improvement after which training will be stopped
+        monitor='val_loss',  # Metric to monitor
+        mode='min'  # Mode of the monitored metric (min or max)
+    )
+    return early_stopping_callback
