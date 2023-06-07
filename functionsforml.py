@@ -309,5 +309,32 @@ def create_earlystopping_callback():
     return early_stopping_callback
   
   
+  
+  from datetime import datetime
 
+def str_to_datetime(date_string, format_string):
+    """
+    Convert a string into a datetime object.
 
+    Args:
+        date_string (str): The string representing the date and time.
+        format_string (str): The format of the date string.
+
+    Returns:
+        datetime: The datetime object representing the parsed date and time.
+
+    Raises:
+        ValueError: If the date string does not match the specified format.
+
+    Example:
+        >>> date_string = "2023-06-07 12:30:00"
+        >>> format_string = "%Y-%m-%d %H:%M:%S"
+        >>> datetime_obj = str_to_datetime(date_string, format_string)
+        >>> print(datetime_obj)
+        2023-06-07 12:30:00
+    """
+    try:
+        datetime_obj = datetime.strptime(date_string, format_string)
+        return datetime_obj
+    except ValueError:
+        raise ValueError("Invalid date format!")
